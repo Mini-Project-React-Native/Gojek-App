@@ -23,5 +23,6 @@ import Pay from './pay.png';
 import Promo from './promo.png';
 import Search from './search.png';
 import TopUp from './topup.png';
+import SmartphoneWhite from './smartphone-white.png';
 
-export { AccountActive, Account, GoBluebird, GoCar, GoDeals, GoFood, GoMore, GoPulsa, GoRide, GoSend, Gopay, HelpActive, Help, HomeActive, Home, InboxActive, Inbox, More, Nearby, OrderActive, Order, Pay, Promo, Search, TopUp };
+export { AccountActive, Account, GoBluebird, GoCar, GoDeals, GoFood, GoMore, GoPulsa, GoRide, GoSend, Gopay, HelpActive, Help, HomeActive, Home, InboxActive, Inbox, More, Nearby, OrderActive, Order, Pay, Promo, Search, TopUp, SmartphoneWhite };
