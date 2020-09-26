@@ -1,3 +1,4 @@
 import Routers from './Routers';
+import Firestore from './Firebase'
 
-export { Routers };
+export { Routers, Firestore };

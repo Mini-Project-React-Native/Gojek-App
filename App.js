@@ -6,20 +6,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      phoneNumber: null,
     };
   }
 
-  loggedIn = () => {
+  loggedIn = phoneNumber => {
     this.setState({
-      isLoggedIn: !this.state.isLoggedIn,
+      phoneNumber,
     });
   };
 
   render() {
     return (
       <>
-        {this.state.isLoggedIn ? (
+        {this.state.phoneNumber !== null ? (
           <Routers />
         ) : (
           <LoginPage login={this.loggedIn} />
