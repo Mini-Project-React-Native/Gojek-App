@@ -1,5 +1,6 @@
 const def = {
   userId: undefined,
+  fullname: undefined,
   phoneNumber: undefined,
 };
 
@@ -9,6 +10,7 @@ const AuthReducer = (state = def, action) => {
     case 'LOGIN':
       return {
         userId: action.payload.userId,
+        fullname: action.payload.fullname,
         phoneNumber: action.payload.phoneNumber,
       };
     case 'LOGOUT':

@@ -27,6 +27,7 @@ const LoginPage = props => {
           let data = {};
           users.forEach(user => {
             data.userId = user.id;
+            data.fullname = user.data().fullname;
             data.phoneNumber = user.data().phone_number;
           });
           console.log('login()', data);
