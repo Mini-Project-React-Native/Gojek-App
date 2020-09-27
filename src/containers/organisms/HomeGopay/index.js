@@ -38,7 +38,16 @@ const HomeGopay = props => {
   }, []);
 
   const readBarcode = async data => {
-    console.log(data);
+    await firestore()
+      .collection('balance')
+      .doc(balanceId)
+      .update({
+        balance: firestore.FieldValue.increment(
+          -parseInt(JSON.parse(data.data).value)
+        ),
+      });
+    ToastAndroid.show('Balance Deducted', 3000);
+    setCamera(false);
   };
 
   const topUpBalance = () => {
