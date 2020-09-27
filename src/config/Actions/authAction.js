@@ -1,8 +1,7 @@
 const setLogin = data => {
+  console.log('setlogin()', data);
   return {
-    payload: {
-      phoneNumber: data.phoneNumber,
-    },
+    payload: data,
     type: 'LOGIN',
   };
 };

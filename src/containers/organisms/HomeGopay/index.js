@@ -7,31 +7,40 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import {Gopay, More, Nearby, Pay, TopUp} from '../../../assets/icon';
-import {GopayFeature} from '../../../components/molecules';
-import {Overlay} from 'react-native-elements';
-import {RNCamera} from 'react-native-camera';
+import { Gopay, More, Nearby, Pay, TopUp } from '../../../assets/icon';
+import { GopayFeature } from '../../../components/molecules';
+import { Overlay } from 'react-native-elements';
+import { RNCamera } from 'react-native-camera';
+import firestore from '@react-native-firebase/firestore';
+import { connect } from 'react-redux';
 
-const HomeGopay = () => {
+const HomeGopay = props => {
   const [isVisible, setVisible] = React.useState(false);
-  let camera = React.useRef();
+  const [balance, setBalance] = React.useState(null);
 
-  const takePicture = async () => {
-    if (camera) {
-      const options = {quality: 0.5, base64: true};
-      const data = await camera.takePictureAsync(options);
-      console.log(data.uri);
-    }
-  };
+  React.useEffect(() => {
+    console.log('homegopay()', props);
+    const unsubscribe = firestore()
+      .collection('balance')
+      .where('user_id', '==', props.auth.userId)
+      .onSnapshot(querySnapshot => {
+        let balances = [];
+        querySnapshot.forEach(balance => {
+          balances.push(balance.data());
+        });
+        setBalance(balances[0].balance);
+      });
+    return () => unsubscribe();
+  }, []);
 
-  const readBarcode = (data) => {
+  const readBarcode = data => {
     Alert.alert('QRCode', `Data: ${data.data}`);
     setVisible(false);
   };
 
   return (
     <>
-      <View style={{marginHorizontal: 17, marginTop: 8}}>
+      <View style={{ marginHorizontal: 17, marginTop: 8 }}>
         <View
           style={{
             flexDirection: 'row',
@@ -42,8 +51,8 @@ const HomeGopay = () => {
             padding: 14,
           }}>
           <Image source={Gopay} />
-          <Text style={{fontSize: 17, fontWeight: 'bold', color: 'white'}}>
-            Rp50.375
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: 'white' }}>
+            Rp. {balance}
           </Text>
         </View>
         <View
@@ -69,9 +78,6 @@ const HomeGopay = () => {
         fullScreen={true}>
         <>
           <RNCamera
-            ref={(ref) => {
-              camera = ref;
-            }}
             style={styles.preview}
             androidCameraPermissionOptions={{
               title: 'Permission to use camera',
@@ -101,4 +107,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeGopay;
+const mapStateToProps = state => ({ auth: state.auth });
+
+export default connect(mapStateToProps)(HomeGopay);
