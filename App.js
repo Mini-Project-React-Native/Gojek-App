@@ -4,7 +4,9 @@ import { LoginPage } from './src/containers/pages';
 import { connect } from 'react-redux';
 
 const App = props => {
-  return <>{props.auth.phoneNumber !== null ? <Routers /> : <LoginPage />}</>;
+  console.log('App()', props.auth.userId !== undefined);
+  console.log('App()', props);
+  return <>{props.auth.userId !== undefined ? <Routers /> : <LoginPage />}</>;
 };
 
 const mapStateToProps = state => ({ auth: state.auth });
