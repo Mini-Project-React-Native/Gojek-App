@@ -24,9 +24,13 @@ const LoginPage = props => {
       .get()
       .then(users => {
         if (!users.empty) {
-          users.forEach(user =>
-            props.setLogin({ phoneNumber: user.data().phone_number })
-          );
+          let data = {};
+          users.forEach(user => {
+            data.userId = user.id;
+            data.phoneNumber = user.data().phone_number;
+          });
+          console.log('login()', data);
+          props.setLogin(data);
         } else {
           Alert.alert('Error', 'Number Not Registered');
         }
@@ -108,8 +112,12 @@ const LoginPage = props => {
   );
 };
 
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
 const mapDispatchToProps = dispatch => ({
   setLogin: data => dispatch(setLogin(data)),
 });
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

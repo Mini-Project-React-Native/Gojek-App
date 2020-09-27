@@ -66,7 +66,7 @@ const HomeGopay = props => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            backgroundColor: '#2C5F88',
+            backgroundColor: '#2B5EB7',
             borderTopLeftRadius: 4,
             borderTopRightRadius: 4,
             padding: 14,
@@ -81,7 +81,7 @@ const HomeGopay = props => {
             flexDirection: 'row',
             paddingTop: 20,
             paddingBottom: 10,
-            backgroundColor: '#2C6580',
+            backgroundColor: '#2E63BB',
             borderBottomLeftRadius: 4,
             borderBottomRightRadius: 4,
           }}>
