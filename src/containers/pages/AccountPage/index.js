@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
+import { setLogout } from '../../../config/Actions/authAction';
 
+const AccountPage = props => {
+  return (
+    <View>
+      <Text>AccountPage</Text>
+      <TouchableOpacity onPress={() => props.setLogout()}>
+        <Text>LOGOUT</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-class AccountPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    render() { 
-        return (
-            <View>
-                <Text>AccountPage</Text>
-            </View>
-        );
-    }
-}
- 
-export default AccountPage;
+const mapDispatchToProps = dispatch => ({
+  setLogout: () => dispatch(setLogout()),
+});
+
+export default connect(null, mapDispatchToProps)(AccountPage);

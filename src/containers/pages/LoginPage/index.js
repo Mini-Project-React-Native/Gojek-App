@@ -10,6 +10,8 @@ import {
 import { SmartphoneWhite } from '../../../assets/icon';
 import { LogoGojekPutih } from '../../../assets/logo';
 import firestore from '@react-native-firebase/firestore';
+import { connect } from 'react-redux';
+import { setLogin } from '../../../config/Actions/authAction';
 
 const LoginPage = props => {
   const [phoneNumber, setPhoneNumber] = React.useState();
@@ -22,7 +24,9 @@ const LoginPage = props => {
       .get()
       .then(users => {
         if (!users.empty) {
-          users.forEach(user => props.login(user.data().phoneNumber));
+          users.forEach(user =>
+            props.setLogin({ phoneNumber: user.data().phone_number })
+          );
         } else {
           Alert.alert('Error', 'Number Not Registered');
         }
@@ -104,4 +108,8 @@ const LoginPage = props => {
   );
 };
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => ({
+  setLogin: data => dispatch(setLogin(data)),
+});
+
+export default connect(null, mapDispatchToProps)(LoginPage);
