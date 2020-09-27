@@ -1,32 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Routers from './src/config/Routers';
 import { LoginPage } from './src/containers/pages';
+import { connect } from 'react-redux';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      phoneNumber: null,
-    };
-  }
+const App = props => {
+  return <>{props.auth.phoneNumber !== null ? <Routers /> : <LoginPage />}</>;
+};
 
-  loggedIn = phoneNumber => {
-    this.setState({
-      phoneNumber,
-    });
-  };
+const mapStateToProps = state => ({ auth: state.auth });
 
-  render() {
-    return (
-      <>
-        {this.state.phoneNumber !== null ? (
-          <Routers />
-        ) : (
-          <LoginPage login={this.loggedIn} />
-        )}
-      </>
-    );
-  }
-}
-
-export default App;
+export default connect(mapStateToProps)(App);
