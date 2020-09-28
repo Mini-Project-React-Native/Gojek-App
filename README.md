@@ -14,21 +14,32 @@ Cloning **Gojek App** using React Native.
 ### Features Demo:
 
 <p align="center">
-  <img src="./src/assets/dummy/screen-login.png" border="0" alt="demo-app" />
+  <img src="./src/assets/dummy/screen-login.png" border="0" alt="demo-app" width="108" height="216" />
 </p>
+<p>Login Screen</p><br>
+
 <p align="center">
-  <img src="./src/assets/dummy/screen-home.png" border="0" alt="demo-app" />
+  <img src="./src/assets/dummy/screen-home.png" border="0" alt="demo-app" width="108" height="216" />
 </p>
+<p>Home Screen</p><br>
+
 <p align="center">
-  <img src="./src/assets/dummy/screen-orders.png" border="0" alt="demo-app"  />
+  <img src="./src/assets/dummy/screen-orders.png" border="0" alt="demo-app" width="108" height="216"  />
 </p>
+<p>Orders Screen</p><br>
+
 <p align="center">
-  <img src="./src/assets/dummy/screen-help.png" border="0" alt="demo-app"/>
+  <img src="./src/assets/dummy/screen-help.png" border="0" alt="demo-app" width="108" height="216"/>
 </p>
+<p>Help Screen</p><br>
+
 <p align="center">
-  <img src="./src/assets/dummy/screen-inbox.png" border="0" alt="demo-app" />
+  <img src="./src/assets/dummy/screen-inbox.png" border="0" alt="demo-app" width="108" height="216" />
 </p>
+<p>Inbox Screen</p><br>
+
 <p align="center">
-  <img src="./src/assets/dummy/screen-account.png" border="0" alt="demo-app"  />
+  <img src="./src/assets/dummy/screen-account.png" border="0" alt="demo-app" width="108" height="216"  />
 </p>
+<p>Account Screen</p><br>
 
